@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mr Bamgboye Seyi Ojo | Personal Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --bg-color: #f4f4f9;
+      --text-color: #333;
+      --card-bg: #fff;
+      --accent-color: #0077cc;
+      --accent-gradient: linear-gradient(135deg, #0077cc, #00c6ff);
+      --footer-bg: #222;
+    }
+
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #f5f5f5;
+      --card-bg: #1e1e1e;
+      --accent-color: #00c6ff;
+      --accent-gradient: linear-gradient(135deg, #00c6ff, #0077cc);
+      --footer-bg: #0d0d0d;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    header {
+      background: var(--accent-gradient);
+      color: white;
+      padding: 50px 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 2.3em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1em;
+      font-weight: 300;
+    }
+
+    /* Toggle Button */
+    .toggle-btn {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 1.5em;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .toggle-btn:hover {
+      transform: rotate(20deg);
+    }
+
+    img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      margin-top: -80px;
+      border: 5px solid white;
+      object-fit: cover;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: transform 0.4s ease;
+    }
+    img:hover {
+      transform: scale(1.05);
+    }
+
+    main {
+      margin: 60px auto;
+      max-width: 900px;
+      padding: 30px;
+      background: var(--card-bg);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      transition: all 0.4s ease;
+    }
+
+    section {
+      margin-top: 50px;
+      text-align: left;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      text-align: center;
+      color: var(--accent-color);
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .experience-item {
+      background: rgba(0,0,0,0.05);
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    body.dark-mode .experience-item {
+      background: rgba(255,255,255,0.05);
+    }
+
+    .contact {
+      margin-top: 25px;
+      font-size: 1em;
+    }
+
+    .contact a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    .social-links {
+      margin-top: 30px;
+    }
+
+    .social-links a {
+      margin: 0 15px;
+      color: var(--accent-color);
+      font-size: 1.8em;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #00c6ff;
+      transform: scale(1.2);
+    }
+
+    .download-btn {
+      display: inline-block;
+      margin-top: 25px;
+      background: var(--accent-gradient);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+
+    .quotes {
+      margin-top: 40px;
+      font-style: italic;
+      color: #777;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .quotes.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      background-color: var(--footer-bg);
+      color: white;
+      padding: 15px;
+      margin-top: 50px;
+      font-size: 0.9em;
+      transition: background-color 0.4s ease;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2em; }
+      main { padding: 20px; }
+      img { width: 130px; height: 130px; margin-top: -65px; }
+      section h2 { font-size: 1.5em; }
+      .social-links a { font-size: 1.5em; margin: 0 10px; }
+    }
+
+    @media (max-width: 480px) {
+      header { padding: 40px 10px; }
+      header h1 { font-size: 1.7em; }
+      header p { font-size: 1em; }
+      main { margin: 40px 15px; }
+      .download-btn { padding: 10px 20px; font-size: 0.9em; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mr Bamgboye Seyi Ojo</h1>
+    <p>Curious. Resourceful. Passionate Learner.</p>
+    <button class="toggle-btn" id="modeToggle" title="Toggle light/dark mode">
+      <i class="fas fa-moon"></i>
+    </button>
+  </header>
+
+  <main>
+    <img src="my pic.jpg" alt="Mr Bamgboye Seyi Ojo">
+    <p>
+      Meet <strong>Mr Bamgboye Seyi Ojo</strong> — a curious and resourceful individual with a passion for learning and exploring the vast expanse of the internet. 
+      With a keen eye for detail and a thirst for knowledge, he is always on the lookout for interesting facts, trends, and insights to stay ahead of the curve. 
+      Whether it's researching the latest news, finding solutions to complex problems, or simply satisfying his curiosity, 
+      he is a master of navigating the digital landscape to uncover the information he needs.
+    </p>
+
+    <div class="contact">
+      <p><strong>Email:</strong> <a href="mailto:seyibamgboye299@gmail.com">seyibamgboye299@gmail.com</a></p>
+      <p><strong>WhatsApp:</strong> <a href="https://wa.me/2348028857100" target="_blank">+2348028857100</a></p>
+      <p><strong>Phone:</strong> <a href="tel:+2348140534132">+2348140534132</a></p>
+    </div>
+
+    <div class="social-links">
+      <a href="https://linkedin.com/in/seyi-b-6aa67519b" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://facebook.com/PoundBamgboye" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://instagram.com/allbam007" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <a class="download-btn" href="Bamgboye Seyi Ojo CV.docx" download>📄 Download CV</a>
+
+    <!-- Skills & Experience Section -->
+    <section>
+      <h2>Professional Summary</h2>
+      <p>Results-driven sales leader with a proven track record of driving revenue growth, leading high-performing teams, and delivering exceptional customer experiences. Skilled in sales strategy, team development, and customer relationship management, with a strong ability to analyze sales data and develop actionable insights.</p>
+    </section>
+
+    <section>
+      <h2>Work Experience</h2>
+      <div class="experience-item">
+        <strong>CEO, Stanford Global Ventures (2015 - Present)</strong>
+        <ul>
+          <li>Developed and implemented business strategies to drive growth and revenue.</li>
+          <li>Managed team and ensured high-quality service delivery.</li>
+        </ul>
+      </div>
+      <div class="experience-item">
+        <strong>Sales Manager, Otee Spicy (2019 - 2020)</strong>
+        <ul>
+          <li>Developed and executed sales strategies to drive revenue growth.</li>
+          <li>Managed sales team and provided training and support.</li>
+          <li>Analyzed sales data and developed actionable insights to inform business decisions.</li>
+        </ul>
+      </div>
+      <div class="experience-item">
+        <strong>Logistics Manager, Amama Nigeria Limited (2013)</strong>
+        <ul>
+          <li>Managed logistics operations and ensured timely delivery.</li>
+          <li>Coordinated with suppliers and vendors to ensure smooth operations.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Key Skills</h2>
+      <ul>
+        <li>Sales Strategy & Target Achievement</li>
+        <li>Team Leadership & Staff Development</li>
+        <li>Customer Relationship Management (CRM)</li>
+        <li>Sales Forecasting & Data Analysis</li>
+        <li>Budgeting & Cost Management</li>
+        <li>Conflict Resolution & Negotiation</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <ul>
+        <li><strong>Diploma in Computer Studies</strong> – Unaab Consults, Abeokuta</li>
+        <li><strong>Nigeria Certificate in Education</strong> – Federal College of Education Technical Akoka (2008 - 2011)</li>
+        <li><strong>Currently pursuing Degree in Software Development</strong> – Brigham Young University Idaho (2026–2028)</li>
+      </ul>
+    </section>
+
+    <div class="quotes">
+      <p>“Success is peace of mind, which is a direct result of self-satisfaction in knowing you made the effort to become the best of which you are capable.” — <em>John Wooden</em></p>
+      <p>“I never dreamed about success. I worked for it.” — <em>Estée Lauder</em></p>
+      <p>Reference: <a href="https://www.shopify.com/blog/motivational-quotes" target="_blank">Shopify Motivational Quotes</a></p>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Mr Bamgboye Seyi Ojo | All Rights Reserved
+  </footer>
+
+  <script>
+    // Dark mode toggle
+    const toggleBtn = document.getElementById('modeToggle');
+    const body = document.body;
+    const icon = toggleBtn.querySelector('i');
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      icon.classList.replace('fa-moon', 'fa-sun');
+    }
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      if (body.classList.contains('dark-mode')) {
+        icon.classList.replace('fa-moon', 'fa-sun');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        icon.classList.replace('fa-sun', 'fa-moon');
+        localStorage.setItem('theme', 'light');
+      }
+    });
+
+    // Fade-in animation on scroll
+    const sections = document.querySelectorAll('section, .quotes');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+    sections.forEach(sec => observer.observe(sec));
+  </script>
+</body>
+</html>
